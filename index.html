@@ -6,39 +6,69 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/popup.css">
   <script src="app.js"></script>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="dialog-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   <script>
-  $( function() {
-    $( "#dialog" ).dialog({
+    $(function() {
+    $( "#j_dialog" ).dialog({
+      autoOpen: true,
       modal: true,
+      width: 350,
+      height: 300,
+
       buttons: {
         Ok: function() {
           $( this ).dialog( "close" );
           blastar()
         }
+        },
+      show: {
+        effect: "bounce",
+        duration: 1500
+      },
+      hide: {
+        effect: "fade",
+        duration: 1000
       }
+
     });
-  } );
+   });
+  $( ".selector" ).dialog({
+  closeOnEscape: false
+});
+      // $("select").imagepicker()
+      // $( function() {
+      //   $( "#dialog" ).dialog({
+      //     modal: true,
+      //     buttons: {
+      //       Ok: function() {
+      //         $( this ).dialog( "close" );
+      //         blastar()
+      //       }
+      //     }
+      //   });
+      // } );
   </script>
 </head>
 
-<body bgcolor="#333" onload="initBasicEnvironment();">
-  <div id="dialog">
+<body bgcolor="#333" onload="initBasicEnvironment(); imagepicker();">
+  <div id="j_dialog">
   <fieldset>
     <label for="people">Select a Character:</label>
-    <select name="character" id="character">
-      <option value="1" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">John Resig</option>
-      <option value="2" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Tauren Mills</option>
-      <option value="3" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Jane Doe</option>
+    <select class="image-picker show-labels show-html" id="character">
+      <option data-img-src="img/characters/elon.png" value="1">Elongated Musketeer</option>
+      <option data-img-src="img/characters/jeff.png" value="2">Dr. Jeff Powers</option>
+      <option data-img-src="http://placekitten.com/130/200" value="3">Dr. PP</option>
+      <option data-img-src="http://placekitten.com/270/200" value="4">Virgin Richard</option>
     </select>
   </fieldset>
   </div>
   <div id="myProgress">
     <div id="myBar"></div>
   </div>
+  <div>
   <center>
     <h1>Blastar for HTML5</h1>
     <img src="img/blastar0.ico" id="sprite0" style="display: none">
@@ -69,6 +99,7 @@
     <h2>Instructions for the web version</h2>
     <div>Use the arrow keys to move your ship and the space bar to shoot.</div>
   </center>
+  </div>
 </body>
 
 </html>

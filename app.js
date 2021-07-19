@@ -9,8 +9,29 @@ var SC=0, SH
 var P, C
 var H, G
 var selectedCharacterImage = 0
+var memedialog;
+
+function selectCharacter() {
+  var selectCharacter = document.getElementById("character")
+  selectCharacter.addEventListener("change", function() { 
+    selectedCharacterImage = selectCharacter.value
+    console.log(selectCharacter.value)
+  })
+}
+
+function changeRocket() {
+  var rocket = document.getElementById("sprite0")
+  if (selectedCharacterImage == '1') {
+    rocket.src = 'img/rockets/elon.png'
+  } else if (selectedCharacterImage == '2') {
+    rocket.src = 'img/rockets/jeff.png'
+  } else {
+    rocket.src = 'img/rockets/rocket.png'
+  }
+}
 
 function blastar() {
+  selectCharacter();
   fillTextStyle = "#BBBBBB"
   SH=5;SC=0
   screen(2)
@@ -85,6 +106,8 @@ function startGame() {
     [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00],  // Explosion
     [0x00, 0x10, 0x38, 0x7c, 0x7c, 0x38, 0x10, 0x00]   // Status Beam
   ]
+  var rocker = document.getElementById("character")
+   changeRocket()
   mainProgram()
   move()
 }
@@ -661,6 +684,9 @@ function move() {
     var width = 100;
     var id = setInterval(frame, 100);
     function frame() {
+      if (width == 50) {
+        clearInterval(id)
+      }
       if (width <= 0) {
         clearInterval(id);
         i = 0;

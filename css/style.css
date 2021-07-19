@@ -44,15 +44,6 @@ input#spcbar {
   width: 250px;
 }
 
-select#gender option[value="male"] {
-  background-image: url(dragon.png);
-}
-select#gender option[value="female"] {
-  background-image: url(female.png);
-}
-select#gender option[value="others"] {
-  background-image: url(others.png);
-}
 #myProgress {
   width: 100%;
   background-color: grey;
