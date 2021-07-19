@@ -15,23 +15,25 @@ function selectCharacter() {
   var selectCharacter = document.getElementById("character")
   selectCharacter.addEventListener("change", function() { 
     selectedCharacterImage = selectCharacter.value
-    console.log(selectCharacter.value)
+    console.log(selectedChar)
   })
 }
 
 function changeRocket() {
   var rocket = document.getElementById("sprite0")
-  if (selectedCharacterImage == '1') {
+  var selectCharacter = document.getElementById("character").value
+  if (selectCharacter == '1') {
     rocket.src = 'img/rockets/elon.png'
-  } else if (selectedCharacterImage == '2') {
+  } else if (selectCharacter == '2') {
     rocket.src = 'img/rockets/jeff.png'
   } else {
     rocket.src = 'img/rockets/rocket.png'
   }
+  console.log("WEQEWEW")
+  console.log(selectCharacter)
 }
 
 function blastar() {
-  selectCharacter();
   fillTextStyle = "#BBBBBB"
   SH=5;SC=0
   screen(2)
@@ -106,8 +108,7 @@ function startGame() {
     [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00],  // Explosion
     [0x00, 0x10, 0x38, 0x7c, 0x7c, 0x38, 0x10, 0x00]   // Status Beam
   ]
-  var rocker = document.getElementById("character")
-   changeRocket()
+  changeRocket()
   mainProgram()
   move()
 }
