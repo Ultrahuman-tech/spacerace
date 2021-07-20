@@ -11,20 +11,16 @@ var H, G
 var selectedCharacterImage = 0
 var memedialog;
 
-function selectCharacter() {
-  var selectCharacter = document.getElementById("character")
-  selectCharacter.addEventListener("change", function() { 
-    selectedCharacterImage = selectCharacter.value
-    console.log(selectedChar)
-  })
+function selectCharacter(character) {
+    selectedCharacterImage = character;
 }
 
 function changeRocket() {
   var rocket = document.getElementById("sprite0")
-  var selectCharacter = document.getElementById("character").value
-  if (selectCharacter == '1') {
+  var selectCharacter = selectedCharacterImage;
+  if (selectCharacter == 'elon') {
     rocket.src = 'img/rockets/elon.png'
-  } else if (selectCharacter == '2') {
+  } else if (selectCharacter == 'jeff') {
     rocket.src = 'img/rockets/jeff.png'
   } else {
     rocket.src = 'img/rockets/rocket.png'

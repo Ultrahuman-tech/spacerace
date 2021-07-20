@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Blastar | The HTML5 Game</title>
   <link rel="stylesheet" href="css/style.css">
@@ -11,32 +10,25 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="image-picker.js"></script>
   <script>
-  $( function() {
-    $( "#dialog" ).dialog({
-      modal: true,
-      draggable: false,
-      buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
-          blastar()
-        }
-      }
-    });
-  } );
+    function selectCharacterClick(character) {
+      document.getElementById('selectCharacterDialog').style.display = 'none';
+      selectCharacter(character);
+      blastar();
+    }
   </script>
 </head>
 
 <body bgcolor="#333" onload="initBasicEnvironment();">
-  <div id="dialog">
-    <fieldset>
-      <label for="people">Select a Character:</label>
-      <select name="character" id="character">
-        <option value="1" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Elongated Musketeer</option>
-        <option value="2" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Dr. Jeff Powers</option>
-        <option value="3" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Virgin Richard</option>
-        <option value="4" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Virgin Richard</option>
-      </select>
-    </fieldset>
+  <div id="selectCharacterDialog" class="dialog">
+    <div class="dialog-content">
+      <h1>Select a Character:</h1>
+      <ul id="characters">
+        <li onclick="selectCharacterClick('elon')"><img src="img/characters/elon.png" /> Elongated Musketeer</li>
+        <li onclick="selectCharacterClick('jeff')"><img src="img/characters/jeff.png" /> Dr. Jeff Powers</li>
+        <li onclick="selectCharacterClick('rocket')"><img src="img/characters/richard.png" /> Virgin Richard</li>
+        <li onclick="selectCharacterClick('rocket')"><img src="img/characters/patel.png" /> Virgin Richard</li>
+      </ul>
+    </div>
   </div>
   <div id="myProgress">
     <div id="myBar"></div>
