@@ -9,13 +9,6 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="image-picker.js"></script>
-  <script>
-    function selectCharacterClick(character) {
-      document.getElementById('selectCharacterDialog').style.display = 'none';
-      selectCharacter(character);
-      blastar();
-    }
-  </script>
 </head>
 
 <body bgcolor="#333" onload="initBasicEnvironment();">
@@ -23,10 +16,10 @@
     <div class="dialog-content">
       <h1>Select a Character:</h1>
       <ul id="characters">
-        <li onclick="selectCharacterClick('elon')"><img src="img/characters/elon.png" /> Elongated Musketeer</li>
-        <li onclick="selectCharacterClick('jeff')"><img src="img/characters/jeff.png" /> Dr. Jeff Powers</li>
-        <li onclick="selectCharacterClick('rocket')"><img src="img/characters/richard.png" /> Virgin Richard</li>
-        <li onclick="selectCharacterClick('rocket')"><img src="img/characters/patel.png" /> Virgin Richard</li>
+        <li onclick="selectCharacter('elon')"><img src="img/characters/elon.png" /> Elongated Musketeer</li>
+        <li onclick="selectCharacter('jeff')"><img src="img/characters/jeff.png" /> Dr. Jeff Powers</li>
+        <li onclick="selectCharacter('rocket')"><img src="img/characters/Richard.png" /> Virgin Richard</li>
+        <li onclick="selectCharacter('rocket')"><img src="img/characters/patel.png" /> Virgin Richard</li>
       </ul>
     </div>
   </div>

@@ -12,7 +12,9 @@ var selectedCharacterImage = 0
 var memedialog;
 
 function selectCharacter(character) {
-    selectedCharacterImage = character;
+  selectedCharacterImage = character;
+  document.getElementById("selectCharacterDialog").style.display = "none";
+  blastar();
 }
 
 function changeRocket() {
@@ -25,8 +27,6 @@ function changeRocket() {
   } else {
     rocket.src = 'img/rockets/rocket.png'
   }
-  console.log("WEQEWEW")
-  console.log(selectCharacter)
 }
 
 function blastar() {
@@ -673,16 +673,21 @@ function beep() {
 }
 
 
-var i = 0;
+var hasAlreadyMoved = false;
+var kSecondsAfterCTA = 15;
+var kFuelPercentangeForCTA = 50;
+var kIntervalInMilisecondsLosing1Percent = (kSecondsAfterCTA / (100 - kFuelPercentangeForCTA)) * 1000;
+
 function move() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("myBar");
+  if (hasAlreadyMoved == false) {
+    hasAlreadyMoved = true;
+    var elem = document.getElementById("fuel-green");
     var width = 100;
-    var id = setInterval(frame, 100);
+    var id = setInterval(frame, kIntervalInMilisecondsLosing1Percent);
     function frame() {
       if (width == 50) {
-        clearInterval(id)
+        clearInterval(id);
+        displayFuelCTA();
       }
       if (width <= 0) {
         clearInterval(id);
@@ -693,4 +698,8 @@ function move() {
       }
     }
   }
+}
+
+function displayFuelCTA() {
+  
 }
