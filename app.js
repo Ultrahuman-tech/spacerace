@@ -277,7 +277,6 @@ function startLoop(loop, period) {
 }
 
 function stopLoop() {
-  clearInterval(currentInterval - 1)  // Just in case. Safari has timing hiccups.
   clearInterval(currentInterval)
 }
 
@@ -675,31 +674,35 @@ function beep() {
 
 var hasAlreadyMoved = false;
 var kSecondsAfterCTA = 15;
-var kFuelPercentangeForCTA = 50;
+var kFuelPercentangeForCTA = 0;
 var kIntervalInMilisecondsLosing1Percent = (kSecondsAfterCTA / (100 - kFuelPercentangeForCTA)) * 1000;
 
 function move() {
   if (hasAlreadyMoved == false) {
     hasAlreadyMoved = true;
     var elem = document.getElementById("fuel-green");
-    var width = 100;
+    var widthPercentage = 100;
+    var initialWidth = elem.getBoundingClientRect().width;
     var id = setInterval(frame, kIntervalInMilisecondsLosing1Percent);
     function frame() {
-      if (width == 50) {
+      if (widthPercentage <= kFuelPercentangeForCTA) {
         clearInterval(id);
         displayFuelCTA();
-      }
-      if (width <= 0) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width--;
-        elem.style.width = width + "%";
-      }
+        stopLoop();
+        return;
+      }      
+      widthPercentage--;
+      elem.style.width = initialWidth * (widthPercentage / 100) + "px";
     }
   }
 }
 
 function displayFuelCTA() {
-  
+  document.getElementById('fuel-cta').style.display = 'block';
 }
+
+$(function() {
+  $(".captcha-image").on('click', function() {
+    $(this).toggleClass('checked');
+  })
+});

@@ -4,28 +4,15 @@
   <title>Blastar | The HTML5 Game</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/popup.css">
-  <script src="app.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="app.js"></script>
   <script src="image-picker.js"></script>
 </head>
 
 <body bgcolor="#333" onload="initBasicEnvironment();">
-  <div id="selectCharacterDialog" class="dialog">
-    <div class="dialog-content">
-      <h1>Select a Character:</h1>
-      <ul id="characters">
-        <li onclick="selectCharacter('elon')"><img src="img/characters/elon.png" /> Elongated Musketeer</li>
-        <li onclick="selectCharacter('jeff')"><img src="img/characters/jeff.png" /> Dr. Jeff Powers</li>
-        <li onclick="selectCharacter('rocket')"><img src="img/characters/Richard.png" /> Virgin Richard</li>
-        <li onclick="selectCharacter('rocket')"><img src="img/characters/patel.png" /> Virgin Richard</li>
-      </ul>
-    </div>
-  </div>
-  <div id="myProgress">
-    <div id="myBar"></div>
-  </div>
+
   <center>
     <h1>Blastar for HTML5</h1>
     <img src="img/blastar0.ico" id="sprite0" style="display: none">
@@ -35,11 +22,19 @@
     <img src="img/blastar4.ico" id="sprite5" style="display: none">
     <img src="img/blastar5.ico" id="sprite6" style="display: none">
     <img src="img/dragon.png" id="dragon" style="display: none">
-    <div>
+    <div id="canvas-container">
       <canvas height="600" width="750" id="canvas" style="width: 750px">[YOUR BROWSER IS NOT SUPPORTED]</canvas>
       <br><audio id="speaker0">[Audio is not supported in your browser]</audio><audio id="speaker1"></audio>
-      <label><input type="checkbox" id="muted" onclick="toggleMute(this)"> MUTE</label><br><br>
+      <div id="fuel-container">
+        Fuel
+        <div id="fuel">
+          <div id="fuel-red"></div>
+          <div id="fuel-green"></div>
+        </div>
+      </div>
+      <label><input type="checkbox" id="muted" onclick="toggleMute(this)"> MUTE</label>
     </div>
+      
     <table id="gamepad">
       <tr>
         <td><input type="button" value="Y" id="yes"><input type="button" value="N" id="no"><br><br>
@@ -56,6 +51,37 @@
     <h2>Instructions for the web version</h2>
     <div>Use the arrow keys to move your ship and the space bar to shoot.</div>
   </center>
+  <div id="selectCharacterDialog" class="dialog">
+    <div class="dialog-content">
+      <h1>Select a Character:</h1>
+      <ul id="characters">
+        <li onclick="selectCharacter('elon')"><img src="img/characters/elon.png" /> Elongated Musketeer</li>
+        <li onclick="selectCharacter('jeff')"><img src="img/characters/jeff.png" /> Dr. Jeff Powers</li>
+        <li onclick="selectCharacter('rocket')"><img src="img/characters/Richard.png" /> Virgin Richard</li>
+        <li onclick="selectCharacter('rocket')"><img src="img/characters/patel.png" /> Virgin Richard</li>
+      </ul>
+    </div>
+  </div>
+  <div id="fuel-cta" class="dialog">
+    <div class="dialog-content">
+      <h1>You're out of fuel!</h1>
+      <div class="fake-captcha">
+        <h2>Select all the images with robots</h2>
+        <div class="captcha-images">
+          <img src="img/captcha/1.jpg" class="captcha-image" />
+          <img src="img/captcha/2.jpg" class="captcha-image" />
+          <img src="img/captcha/3.jpg" class="captcha-image" />
+          <img src="img/captcha/4.jpg" class="captcha-image" />
+          <img src="img/captcha/5.jpg" class="captcha-image" />
+          <img src="img/captcha/6.jpg" class="captcha-image" />
+          <img src="img/captcha/7.jpg" class="captcha-image" />
+          <img src="img/captcha/8.png" class="captcha-image" />
+        </div>
+        <div class="not-a-robot"><label><input type="checkbox" /> I am not a robot</label></div>
+      </div>
+      <a href="https://ultrahuman.com/#step-meditate">Refuel</a>
+    </div>
+  </div>
 </body>
 
 </html>
