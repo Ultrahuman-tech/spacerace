@@ -2,6 +2,11 @@
   font-family: "Commodore";
   src: url("CommodorePixelized.ttf");
 }
+
+:root {
+  --gamepad-button-size: 75px;
+}
+
 body {
   font-family: "Verdana";
   text-align: center;
@@ -38,11 +43,11 @@ td {
 #gamepad > div {
   display: grid;
   gap: 8px;
-  grid-template-columns: repeat(2, 75px);
+  grid-template-columns: repeat(2, var(--gamepad-button-size));
 }
 
 #gamepad > div:last-child {
-  grid-template-columns: repeat(3, 75px);
+  grid-template-columns: repeat(3, var(--gamepad-button-size));
 }
 
 #spcbar {
@@ -66,6 +71,8 @@ td {
   background-color: grey;
   color: white;
   height: 75px;
+  -webkit-appearance: none;
+  border-radius: 0;
 }
 
 #canvas-container {
@@ -124,12 +131,6 @@ ul#characters li:hover {
   width: 50px;
   height: 50px;
   object-fit: contain;
-}
-
-@media screen and (max-width: 600px) {
-  ul#characters {
-    font-size: 45px;
-  }
 }
 
 #fuel-container {
@@ -243,4 +244,14 @@ ul#characters li:hover {
   width: 50px;
   margin: 0;
   margin-right: 8px;
+}
+
+@media screen and (max-width: 600px) {
+  ul#characters {
+    font-size: 45px;
+  }
+
+  :root {
+    --gamepad-button-size: 150px;
+  }
 }
