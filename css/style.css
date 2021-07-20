@@ -28,17 +28,44 @@ td {
   -webkit-user-select: none;
 }
 
-input[type="button"] {
-  height: 120px;
-  width: 120px;
-  font-size: 200%;
+#gamepad {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#gamepad > div {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, 75px);
+}
+
+#gamepad > div:last-child {
+  grid-template-columns: repeat(3, 75px);
+}
+
+#spcbar {
+  grid-column: 1 / -1;
+}
+
+#up {
+  grid-column: 2;
+}
+
+#left, #down, #right {
+  grid-row: 2;
+}
+
+#gamepad input[type="button"] {
+  font-size: 150%;
   box-sizing: content-box;
   -moz-box-sizing: content-box;
   -ms-box-sizing: content-box;
   -webkit-box-sizing: content-box;
-}
-input#spcbar {
-  width: 250px;
+  background-color: grey;
+  color: white;
+  height: 75px;
 }
 
 #canvas-container {
@@ -96,7 +123,7 @@ ul#characters li:hover {
 #characters li img {
   width: 50px;
   height: 50px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 600px) {
@@ -204,6 +231,11 @@ ul#characters li:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#mute {
+  margin: 24px;
+  display: block;
 }
 
 .not-a-robot input {

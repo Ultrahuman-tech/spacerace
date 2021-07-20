@@ -32,20 +32,20 @@
           <div id="fuel-green"></div>
         </div>
       </div>
-      <label><input type="checkbox" id="muted" onclick="toggleMute(this)"> MUTE</label>
+      <label id="mute"><input type="checkbox" id="muted" onclick="toggleMute(this)"> MUTE</label>
+
+      <div id="gamepad">
+        <div><input type="button" value="Y" id="yes"><input type="button" value="N" id="no">
+          <input type="button" value="[spacebar]" id="spcbar">
+        </div>
+        <div>
+          <input type="button" value="^" id="up">
+          <input type="button" value="<" id="left">
+          <input type="button" value="v" id="down">
+          <input type="button" value=">" id="right">
+        </div>
+      </div>
     </div>
-      
-    <table id="gamepad">
-      <tr>
-        <td><input type="button" value="Y" id="yes"><input type="button" value="N" id="no"><br><br>
-          <input type="button" value="      [spacebar]       " id="spcbar">
-        </td>
-        <td> <input type="button" value="^" id="up"><br>
-          <input type="button" value="<" id="left"><input type="button" value="v" id="down"><input type="button"
-            value=">" id="right">
-        </td>
-      </tr>
-    </table>
 
     <p>&nbsp;</p>
     <h2>Instructions for the web version</h2>
