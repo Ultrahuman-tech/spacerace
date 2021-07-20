@@ -6,8 +6,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/popup.css">
   <script src="app.js"></script>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="image-picker.js"></script>
@@ -15,6 +14,7 @@
   $( function() {
     $( "#dialog" ).dialog({
       modal: true,
+      draggable: false,
       buttons: {
         Ok: function() {
           $( this ).dialog( "close" );
@@ -28,15 +28,15 @@
 
 <body bgcolor="#333" onload="initBasicEnvironment();">
   <div id="dialog">
-  <fieldset>
-    <label for="people">Select a Character:</label>
-    <select name="character" id="character">
-      <option value="1" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Elongated Musketeer</option>
-      <option value="2" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Dr. Jeff Powers</option>
-      <option value="3" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Virgin Richard</option>
-      <option value="4" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Virgin Richard</option>
-    </select>
-  </fieldset>
+    <fieldset>
+      <label for="people">Select a Character:</label>
+      <select name="character" id="character">
+        <option value="1" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Elongated Musketeer</option>
+        <option value="2" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Dr. Jeff Powers</option>
+        <option value="3" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Virgin Richard</option>
+        <option value="4" data-class="avatar" data-style="background-image: url(&apos;img/dragon.png&apos;);">Virgin Richard</option>
+      </select>
+    </fieldset>
   </div>
   <div id="myProgress">
     <div id="myBar"></div>

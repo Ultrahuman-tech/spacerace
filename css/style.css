@@ -27,10 +27,7 @@ td {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
 }
-div {
-  width: 750px;
-  margin: 0 auto;
-}
+
 input[type="button"] {
   height: 120px;
   width: 120px;
