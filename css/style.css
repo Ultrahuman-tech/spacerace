@@ -58,7 +58,9 @@ td {
   grid-column: 2;
 }
 
-#left, #down, #right {
+#left,
+#down,
+#right {
   grid-row: 2;
 }
 
@@ -83,12 +85,12 @@ td {
 .dialog {
   position: fixed;
   top: 0;
-  left:0;
+  left: 0;
   right: 0;
   bottom: 0;
   display: flex;
   place-items: center;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
 }
 
@@ -96,7 +98,7 @@ td {
   width: 100%;
   max-width: 800px;
   margin: auto;
-  background-color: rgba(0,0,0,1);
+  background-color: rgba(0, 0, 0, 1);
   padding: 48px;
 }
 
@@ -135,7 +137,7 @@ ul#characters li:hover {
 
 #fuel-container {
   position: relative;
-  font-family: 'Commodore', sans-serif;
+  font-family: "Commodore", sans-serif;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -143,15 +145,17 @@ ul#characters li:hover {
   margin-left: 24px;
 }
 
-#fuel-green, #fuel-red {
+#fuel-green,
+#fuel-red {
   position: absolute;
   height: 60px;
   width: 60px;
   overflow: hidden;
 }
 
-#fuel-green:before, #fuel-red:before {
-  content: '';
+#fuel-green:before,
+#fuel-red:before {
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -186,7 +190,7 @@ ul#characters li:hover {
 }
 
 #fuel-cta {
-  font-family: 'Commodore', sans-serif;
+  font-family: "Commodore", sans-serif;
   display: none;
 }
 
@@ -198,8 +202,8 @@ ul#characters li:hover {
 .captcha-images {
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(2, 100px);
-  grid-template-rows: repeat(4, 100px);
+  grid-template-columns: repeat(2, 50px);
+  grid-template-rows: repeat(4, 50px);
   gap: 16px;
 }
 
@@ -215,6 +219,17 @@ ul#characters li:hover {
   flex-direction: column;
   justify-content: center;
   margin-bottom: 24px;
+}
+
+.cta_refuel {
+  display: flex;
+  flex-direction: inline-block;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.first_fuel_cta {
+  margin-right: 20px;
 }
 
 .checked {

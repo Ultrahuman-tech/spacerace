@@ -706,9 +706,3 @@ $(function() {
     $(this).toggleClass('checked');
   })
 });
-
-$(function() {
-  $(".not-a-robot").on('click', function() {
-    window.location = "https://ultrahuman.com/#step-meditate"
-  })
-});
