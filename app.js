@@ -690,7 +690,7 @@ function move() {
         displayFuelCTA();
         stopLoop();
         return;
-      }      
+      }
       widthPercentage--;
       elem.style.width = initialWidth * (widthPercentage / 100) + "px";
     }
@@ -704,5 +704,11 @@ function displayFuelCTA() {
 $(function() {
   $(".captcha-image").on('click', function() {
     $(this).toggleClass('checked');
+  })
+});
+
+$(function() {
+  $(".not-a-robot").on('click', function() {
+    window.location = "https://ultrahuman.com/#step-meditate"
   })
 });
