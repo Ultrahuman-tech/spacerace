@@ -52,8 +52,7 @@ function blastarTune4() {
 
 function showAuthor() {
   screen(1, 2)
-  print("  BY E.R.MUSK")
-  window.setTimeout(promptForInstructions, 350*kEmptyIterationMillis)
+  window.setTimeout(promptForInstructions, 3*kEmptyIterationMillis)
 }
 
 function promptForInstructions() {
@@ -673,7 +672,7 @@ function beep() {
 
 
 var hasAlreadyMoved = false;
-var kSecondsAfterCTA = 15;
+var kSecondsAfterCTA = 45;
 var kFuelPercentangeForCTA = 0;
 var kIntervalInMilisecondsLosing1Percent = (kSecondsAfterCTA / (100 - kFuelPercentangeForCTA)) * 1000;
 
