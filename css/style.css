@@ -194,6 +194,11 @@ ul#characters li:hover {
   display: none;
 }
 
+#redirect_cta {
+  font-family: "Commodore", sans-serif;
+  display: none;
+}
+
 #fuel-cta a {
   color: white;
   text-decoration: underline;

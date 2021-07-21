@@ -14,7 +14,7 @@ var memedialog;
 function selectCharacter(character) {
   selectedCharacterImage = character;
   document.getElementById("selectCharacterDialog").style.display = "none";
-  blastar();
+  displayFuelCTA()
 }
 
 function changeRocket() {
@@ -687,7 +687,7 @@ function move() {
     function frame() {
       if (widthPercentage <= kFuelPercentangeForCTA) {
         clearInterval(id);
-        displayFuelCTA();
+        displayRedirectCTA();
         stopLoop();
         return;
       }
@@ -701,8 +701,21 @@ function displayFuelCTA() {
   document.getElementById('fuel-cta').style.display = 'block';
 }
 
+function displayRedirectCTA() {
+  document.getElementById('redirect_cta').style.display = 'block';
+}
+
 $(function() {
   $(".captcha-image").on('click', function() {
     $(this).toggleClass('checked');
   })
 });
+
+$(function() {
+  $(".not-a-robot").on('click', function() {
+    document.getElementById('fuel-cta').style.display = 'none';
+    blastar();
+  })
+});
+
+
