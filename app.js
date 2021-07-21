@@ -334,7 +334,7 @@ function redraw() {
   }
 
   for (var i = 0; i < sprite.length; i++) {
-    if (sprite[i]) ctx.drawImage(sprite[i], spriteX[i]*3, spriteY[i]*3, 24, 24)
+    if (sprite[i]) ctx.drawImage(sprite[i], spriteX[i]*3, spriteY[i]*3, 24, 60)
   }
 }
 
