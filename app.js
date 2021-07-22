@@ -68,11 +68,15 @@ function maybeGiveInstructions(keycode) {
   beep()
   if (keycode == 121 || keycode == 89) {
     screen(1)
-    // TODO: double check number of spaces.
+    // TODO: double check number of spaces
+    print(" ")
+    print(" ")
+    print(" ")
+    print(" ")
+    print(" ")
     print("    MISSION:PLAY TILL THE END");print("")
     print("    TO WIN SOMETHING FROM");print("")
     print("    VIRGIN GALACTIC");print("")
-    ctx.strokeRect(45*3, 10*3, 180*3, 80*3)
     inKey(startGame)
   } else {
     startGame()
