@@ -302,6 +302,8 @@ ul#characters li:hover {
   margin-top: 48px;
   margin-bottom: 30px;
   font-size: 4vw;
+  text-shadow: 2px 2px #ff0000;
+  text-shadow: 4px 4px #854646;
   color: red;
 }
 
