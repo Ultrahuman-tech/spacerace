@@ -50,15 +50,26 @@
     <p>&nbsp;</p>
     <h2>Instructions for the web version</h2>
     <div>Use the arrow keys to move your ship and the space bar to shoot.</div>
-  </center>
-  <div id="selectCharacterDialog" class="dialog">
-    <div class="dialog-content">
-      <h1>Select a Character:</h1>
+  <div id="selectCharacterDialog" class="character-dialog">
+    <div class="character-dialog-content">
+      <h1>BLASTAR:SPACE RACE</h1>
+      <h2>Choose your billionaire space</h2>
       <ul id="characters">
-        <li onclick="selectCharacter('elon')"><img src="img/characters/elon.png" /> Elongated Musketeer</li>
-        <li onclick="selectCharacter('jeff')"><img src="img/characters/jeff.png" /> Dr. Jeff Powers</li>
-        <li onclick="selectCharacter('rocket')"><img src="img/characters/Richard.png" /> Virgin Richard</li>
-        <li onclick="selectCharacter('rocket')"><img src="img/characters/patel.png" /> Dr. PP</li>
+        <li onclick="selectCharacter('rocket')">
+          <img src="img/characters/patel.png" /> 
+          Dr. PP
+        </li>
+        <li onclick="selectCharacter('elon')">
+          <img src="img/characters/elon.png" />
+          <span> Elongated Musketeer </span>
+        </li>
+        <li onclick="selectCharacter('jeff')">
+          <img src="img/characters/jeff.png" />
+           Dr. Jeff Powers
+        </li>
+        <li onclick="selectCharacter('rocket')">
+          <img src="img/characters/Richard.png" />
+           Virgin Richard</li>
       </ul>
     </div>
   </div>
@@ -93,6 +104,8 @@
       </div>
     </div>
   </div>
+</center>
+
 </body>
 
 </html>
