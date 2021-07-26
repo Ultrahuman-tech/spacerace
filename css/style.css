@@ -353,3 +353,40 @@ ul#characters li:hover {
   background-color: rgb(65, 88, 223);
   font-family: "Commodore", sans-serif;
 }
+
+.start-game-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  place-items: center;
+}
+
+.start-game-dialog-content {
+  width: 100%;
+  height: 100%;
+  background: #0c0c0c url(/img/virgin_bg.jpg) center;
+  background-size: cover;
+}
+
+.start-game-dialog-content label {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 2vw;
+  font-family: "Commodore", sans-serif;
+  color: white;
+  justify-content: center;
+}
+
+.start-game-dialog-content span {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 1.5vw;
+  font-family: "Commodore", sans-serif;
+  color: white;
+  justify-content: center;
+}

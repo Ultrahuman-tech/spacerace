@@ -34,7 +34,7 @@ function blastar() {
   SH=5;SC=0
   screen(2)
   print(Array(14).join(" ") + "BLASTAR")
-  blastarTune()
+  startGame()
 }
 
 function blastarTune() {
@@ -52,7 +52,7 @@ function blastarTune4() {
 
 function showAuthor() {
   screen(1, 2)
-  window.setTimeout(promptForInstructions, 3*kEmptyIterationMillis)
+  window.setTimeout(inKey(mission), 3*kEmptyIterationMillis)
 }
 
 function promptForInstructions() {
@@ -80,6 +80,14 @@ function maybeGiveInstructions(keycode) {
     inKey(startGame)
   } else {
     startGame()
+  }
+}
+
+function mission(keycode) {
+  document.getElementById("startGameScreen").style.display = "row";
+  if (keycode == 32) {
+    blastar()
+    document.getElementById("startGameScreen").style.display = "none";
   }
 }
 
@@ -711,7 +719,8 @@ $(function() {
 $(function() {
   $(".not-a-robot").on('click', function() {
     document.getElementById('fuel-cta').style.display = 'none';
-    blastar();
+    document.getElementById("startGameScreen").style.display = "block";
+    inKey(mission)
   })
 });
 
