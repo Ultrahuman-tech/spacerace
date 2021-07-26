@@ -85,9 +85,10 @@ function maybeGiveInstructions(keycode) {
 
 function mission(keycode) {
   document.getElementById("startGameScreen").style.display = "row";
+  console.log("ewewew", keycode)
   if (keycode == 32) {
-    blastar()
     document.getElementById("startGameScreen").style.display = "none";
+    blastar()
   }
 }
 
@@ -111,7 +112,7 @@ function startGame() {
   ]
   changeRocket()
   mainProgram()
-  move()
+  moveFirstHalf()
 }
 
 function mainProgram() {
@@ -682,7 +683,7 @@ var kSecondsAfterCTA = 45;
 var kFuelPercentangeForCTA = 0;
 var kIntervalInMilisecondsLosing1Percent = (kSecondsAfterCTA / (100 - kFuelPercentangeForCTA)) * 1000;
 
-function move() {
+function moveFirstHalf() {
   if (hasAlreadyMoved == false) {
     hasAlreadyMoved = true;
     var elem = document.getElementById("fuel-green");
@@ -690,7 +691,28 @@ function move() {
     var initialWidth = elem.getBoundingClientRect().width;
     var id = setInterval(frame, kIntervalInMilisecondsLosing1Percent);
     function frame() {
-      if (widthPercentage <= kFuelPercentangeForCTA) {
+      if (widthPercentage <= 50) {
+        clearInterval(id);
+        showTweet();
+        hasAlreadyMoved = false;
+        return;
+      }
+      widthPercentage--;
+      elem.style.width = initialWidth * (widthPercentage / 100) + "px";
+    }
+  }
+}
+
+function moveSecondHalf() {
+  document.getElementById('tweetScreen').style.display = 'none';
+  if (hasAlreadyMoved == false) {
+    hasAlreadyMoved = true;
+    var elem = document.getElementById("fuel-green");
+    var widthPercentage = 50;
+    var initialWidth = elem.getBoundingClientRect().width;
+    var id = setInterval(frame, kIntervalInMilisecondsLosing1Percent);
+    function frame() {
+      if (widthPercentage <= 10) {
         clearInterval(id);
         displayRedirectCTA();
         stopLoop();
@@ -701,6 +723,11 @@ function move() {
     }
   }
 }
+
+function showTweet() {
+  document.getElementById('tweetScreen').style.display = 'block';
+}
+
 
 function displayFuelCTA() {
   document.getElementById('fuel-cta').style.display = 'block';
@@ -723,5 +750,3 @@ $(function() {
     inKey(mission)
   })
 });
-
-

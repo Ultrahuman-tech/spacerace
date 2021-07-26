@@ -296,7 +296,7 @@ ul#characters li:hover {
   width: 100%;
   height: 100%;
   margin: auto;
-  background: #0c0c0c url(/img/bg_select_character.jpg) center;
+  background: #0c0c0c url(../img/bg_select_character.jpg) center;
   background-size: cover;
   padding: 48px;
 }
@@ -362,31 +362,30 @@ ul#characters li:hover {
   bottom: 0;
   display: none;
   place-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
 }
 
-.start-game-dialog-content {
+.start-game-dialog img {
   width: 100%;
   height: 100%;
-  background: #0c0c0c url(/img/virgin_bg.jpg) center;
-  background-size: cover;
+  object-fit: contain;
 }
 
-.start-game-dialog-content label {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  font-size: 2vw;
-  font-family: "Commodore", sans-serif;
-  color: white;
-  justify-content: center;
+.tweet-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
 }
 
-.start-game-dialog-content span {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  font-size: 1.5vw;
-  font-family: "Commodore", sans-serif;
-  color: white;
-  justify-content: center;
+.tweet-dialog img {
+  width: 90%;
+  height: 100%;
+  object-fit: contain;
 }
