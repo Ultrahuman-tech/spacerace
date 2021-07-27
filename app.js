@@ -742,22 +742,32 @@ function displayFuelCTA() {
 
 function displayRedirectCTA() {
   document.getElementById('redirect_cta').style.display = 'block';
-  var id = setInterval(frame, 3000);
-  function frame() {
-    play(2, 9, 15, "B", maybeEndStatusBeamLoop)
-  }
+  beep();
 }
 
 $(function() {
-  $(".captcha-image").on('click', function() {
+  $(".captcha-image").on('click touchstart', function() {
     $(this).toggleClass('checked');
   })
 });
 
 $(function() {
-  $(".not-a-robot").on('click', function() {
+  $(".not-a-robot").on('click touchstart', function() {
     document.getElementById('fuel-cta').style.display = 'none';
     document.getElementById("startGameScreen").style.display = "block";
     inKey(mission)
+  })
+});
+
+$(function() {
+  $(".start-game-dialog").on('touchstart', function() {
+    document.getElementById("startGameScreen").style.display = "none";
+    blastar()
+  })
+});
+
+$(function() {
+  $(".tweet-dialog").on('click touchstart', function() {
+    moveSecondHalf();
   })
 });
