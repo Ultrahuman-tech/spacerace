@@ -208,8 +208,8 @@ ul#characters li:hover {
 .captcha-images {
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(3, 80px);
-  grid-template-rows: repeat(3, 80px);
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(3, 150px);
   gap: 16px;
 }
 
@@ -224,7 +224,6 @@ ul#characters li:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 24px;
 }
 
 .fake-captcha h1 {
@@ -333,7 +332,6 @@ ul#characters li:hover {
 .captcha-dialog-content {
   width: fit-content;
   height: fit-content;
-  margin-top: 5%;
   align-content: center;
   border: 2px solid #969696;
   background-color: rgb(255, 255, 255);
