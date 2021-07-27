@@ -737,6 +737,10 @@ function displayFuelCTA() {
 
 function displayRedirectCTA() {
   document.getElementById('redirect_cta').style.display = 'block';
+  var id = setInterval(frame, 3000);
+  function frame() {
+    play(2, 9, 15, "B", maybeEndStatusBeamLoop)
+  }
 }
 
 $(function() {
