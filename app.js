@@ -743,6 +743,7 @@ function displayFuelCTA() {
 function displayRedirectCTA() {
   document.getElementById('redirect_cta').style.display = 'block';
   const music = new Audio('alert_alarm.mp3');
+  music.loop();
   music.play();
 }
 
