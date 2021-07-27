@@ -732,7 +732,7 @@ function moveSecondHalf() {
 }
 
 function showTweet() {
-  document.getElementById('tweetScreen').style.display = 'block';
+  document.getElementById('tweetScreen').style.display = 'flex';
 }
 
 
@@ -748,28 +748,22 @@ function displayRedirectCTA() {
 }
 
 $(function() {
-  $(".captcha-image").on('click touchstart', function() {
-    $(this).toggleClass('checked');
-  })
-});
-
-$(function() {
-  $(".not-a-robot").on('click touchstart', function() {
+  $(".not-a-robot").on('click', function() {
     document.getElementById('fuel-cta').style.display = 'none';
     document.getElementById("startGameScreen").style.display = "block";
     inKey(mission)
-  })
-});
+  });
 
-$(function() {
+  $(".captcha-image").on("click", function () {
+    $(this).toggleClass("checked");
+  });
+
   $(".start-game-dialog").on('touchstart', function() {
     document.getElementById("startGameScreen").style.display = "none";
     blastar()
   })
-});
 
-$(function() {
-  $(".tweet-dialog").on('click touchstart', function() {
+  $(".tweet-dialog").on('click', function() {
     moveSecondHalf();
   })
 });

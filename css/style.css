@@ -11,6 +11,7 @@ body {
   font-family: "Verdana";
   text-align: center;
   color: #bbb;
+  font-size: 12px;
 }
 canvas {
   font-size: 24px;
@@ -117,8 +118,10 @@ ul#characters {
 }
 
 ul#characters li {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   line-height: 50px;
+  font-size: 36px;
   justify-content: center;
   cursor: pointer;
   align-items: center;
@@ -126,14 +129,16 @@ ul#characters li {
 }
 
 ul#characters li:hover {
-  background: grey;
-  color: black;
+  background: rgba(0.2, 0.2, 0.2, 0.5);
+  text-decoration: underline;
 }
 
 #characters li img {
-  width: 80px;
-  height: 80px;
+  width: 100%;
   justify-content: center;
+  object-fit: contain;
+  margin-bottom: 24px;
+  height: 40vh;
 }
 
 #fuel-container {
@@ -206,10 +211,10 @@ ul#characters li:hover {
 }
 
 .captcha-images {
-  margin: auto;
+  margin: 24px;
   display: grid;
-  grid-template-columns: repeat(3, 150px);
-  grid-template-rows: repeat(3, 150px);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 16px;
 }
 
@@ -218,19 +223,6 @@ ul#characters li:hover {
   width: 100%;
   height: 100%;
   cursor: pointer;
-}
-
-.fake-captcha {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.fake-captcha h1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  font-size: 20px;
 }
 
 .cta_refuel {
@@ -249,7 +241,8 @@ ul#characters li:hover {
 }
 
 .not-a-robot {
-  margin-top: 24px;
+  margin: 24px;
+  font-size: 32px;
 }
 
 .not-a-robot label {
@@ -265,15 +258,21 @@ ul#characters li:hover {
 }
 
 .not-a-robot input {
-  height: 20px;
-  width: 20px;
+  height: 32px;
+  width: 32px;
   margin: 0;
-  margin-right: 8px;
+  margin-right: 24px;
 }
 
 @media screen and (max-width: 600px) {
   ul#characters {
-    font-size: 80px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 72px;
+  }
+
+  ul#characters li img {
+    max-height: 20vh;
   }
 
   :root {
@@ -304,7 +303,7 @@ ul#characters li:hover {
   text-align: center;
   margin-top: 48px;
   margin-bottom: 30px;
-  font-size: 4vw;
+  font-size: 48px;
   text-shadow: 2px 2px #ff0000;
   text-shadow: 4px 4px #854646;
   color: red;
@@ -313,7 +312,7 @@ ul#characters li:hover {
 .character-dialog-content h2 {
   text-align: center;
   margin-bottom: 30px;
-  font-size: 1.5vw;
+  font-size: 36px;
   color: white;
   font-family: "Commodore";
 }
@@ -333,23 +332,44 @@ ul#characters li:hover {
   width: fit-content;
   height: fit-content;
   align-content: center;
-  border: 2px solid #969696;
   background-color: rgb(255, 255, 255);
   padding: 2px;
+  height: 100vh;
+  width: 100%;
+}
+
+.fake-captcha {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content 1fr max-content;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  max-width: 600px;
+  margin: auto;
+  border: 2px solid #969696;
+}
+
+.fake-captcha h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  font-size: 24px;
 }
 
 .fake-captcha-header {
   display: flex;
   flex-direction: column;
   text-align: left;
-  font-size: 10px;
-  padding-top: 15px;
-  padding-inline-start: 4px;
-  padding-inline-end: 4px;
-  padding-bottom: 15px;
-  margin-bottom: 10px;
+  font-size: 32px;
+  padding: 16px;
   background-color: rgb(65, 88, 223);
   font-family: "Commodore", sans-serif;
+}
+
+.fake-captcha-header label:last-child {
+  font-size: 24px;
 }
 
 .start-game-dialog {
@@ -374,16 +394,21 @@ ul#characters li:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  display: none;
+  display: flex;
   place-items: center;
+  place-content: center;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
+  display: none;
 }
 
 .tweet-dialog img {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 500px;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .cta-dialog {
@@ -392,43 +417,35 @@ ul#characters li:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  display: none;
   place-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 1);
   backdrop-filter: blur(5px);
 }
 
 .cta-dialog-content {
-  width: 50%;
-  height: 50%;
-  margin-top: 5%;
-  align-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  display: grid;
-  grid-template-rows: repeat(4, 0.5fr);
   background-color: rgba(0, 0, 0, 1);
   padding: 2px;
+  height: 100%;
+  font-size: 25px;
 }
 
 .cta-dialog-content img {
-  width: 250px;
-  height: 250px;
-  align-content: center;
-  flex-direction: column;
-  object-fit: contain;
+  margin-bottom: 72px;
+  width: 100%;
+  max-width: 400px;
 }
 
-.cta-dialog-content button {
+.cta-dialog-content a {
+  margin-top: 48px;
   background-color: rgb(94, 150, 11);
   color: white;
-  font-size: 25px;
-  padding-top: 15px;
-  padding-inline-start: 4px;
-  padding-inline-end: 4px;
-  padding-bottom: 15px;
-  margin-left: 5%;
-  margin-right: 5%;
+  padding: 12px;
   font-family: "Commodore", sans-serif;
   border-radius: 12px;
   border: none;
+  text-decoration: none;
 }
