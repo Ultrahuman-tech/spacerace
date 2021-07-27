@@ -103,14 +103,11 @@
   <div id="tweetScreen" class="tweet-dialog">
     <img src="./img/tweet.png" onclick="moveSecondHalf()" />
   </div>
-  <div id="redirect_cta" class="dialog">
-    <div class="dialog-content">
-      <h1>You're out of fuel!</h1>
-      <div class="cta_refuel">
-        <a href="https://ultrahuman.com/#step-meditate" class="first_fuel_cta">Fuel better</a>
-        <span>           </span>
-        <a href="https://ultrahuman.com/#step-meditate">Fuel yourself</a>
-      </div>
+  <div id="redirect_cta" class="cta-dialog">
+    <div class="cta-dialog-content">
+      <img src="img/fuel_empty.png" />
+      <label>You've run out of fuel!!!</label>
+      <button onclick="window.location='https://ultrahuman.com/#step-meditate';">Refuel quickly to continue</button>
     </div>
   </div>
 </center>
