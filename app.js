@@ -94,6 +94,11 @@ function mission(keycode) {
   }
 }
 
+function missionOnClick() {
+  document.getElementById("startGameScreen").style.display = "none";
+  blastar()
+}
+
 function startGame() {
   cls()
   // Load Sprites
