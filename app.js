@@ -19,11 +19,13 @@ function selectCharacter(character) {
 
 function changeRocket() {
   var rocket = document.getElementById("sprite0")
+  document.getElementById("sprite3").src = 'img/rockets/r_jeff.png'
   var selectCharacter = selectedCharacterImage;
   if (selectCharacter == 'elon') {
     rocket.src = 'img/rockets/elon.png'
   } else if (selectCharacter == 'jeff') {
     rocket.src = 'img/rockets/jeff.png'
+    document.getElementById("sprite3").src = 'img/rockets/r_elon.png'
   } else {
     rocket.src = 'img/rockets/rocket.png'
   }
