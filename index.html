@@ -13,41 +13,42 @@
 </head>
 
 <body onload="initBasicEnvironment();">
-  <h1>Blastar</h1>
-  <img src="img/blastar0.ico" id="sprite0" style="display: none">
-  <img src="img/blastar1.ico" id="sprite2" style="display: none">
-  <img src="img/blastar2.ico" id="sprite3" style="display: none">
-  <img src="img/blastar3.ico" id="sprite4" style="display: none">
-  <img src="img/blastar4.ico" id="sprite5" style="display: none">
-  <img src="img/blastar5.ico" id="sprite6" style="display: none">
-  <img src="img/dragon.png" id="dragon" style="display: none">
-  <div id="canvas-container">
-    <canvas height="600" width="750" id="canvas" style="width: 750px">[YOUR BROWSER IS NOT SUPPORTED]</canvas>
-    <br><audio id="speaker0">[Audio is not supported in your browser]</audio><audio id="speaker1"></audio>
-    <div id="fuel-container">
-      Fuel
-      <div id="fuel">
-        <div id="fuel-red"></div>
-        <div id="fuel-green"></div>
+  <div id="game"><h1>Blastar</h1>
+    <img src="img/blastar0.ico" id="sprite0" style="display: none">
+    <img src="img/blastar1.ico" id="sprite2" style="display: none">
+    <img src="img/blastar2.ico" id="sprite3" style="display: none">
+    <img src="img/blastar3.ico" id="sprite4" style="display: none">
+    <img src="img/blastar4.ico" id="sprite5" style="display: none">
+    <img src="img/blastar5.ico" id="sprite6" style="display: none">
+    <img src="img/dragon.png" id="dragon" style="display: none">
+    <div id="canvas-container">
+      <canvas height="600" width="750" id="canvas" style="width: 750px">[YOUR BROWSER IS NOT SUPPORTED]</canvas>
+      <br><audio id="speaker0">[Audio is not supported in your browser]</audio><audio id="speaker1"></audio>
+      <div id="fuel-container">
+        Fuel
+        <div id="fuel">
+          <div id="fuel-red"></div>
+          <div id="fuel-green"></div>
+        </div>
       </div>
-    </div>
-    <label id="mute"><input type="checkbox" id="muted" onclick="toggleMute(this)"> MUTE</label>
+      <label id="mute"><input type="checkbox" id="muted" onclick="toggleMute(this)"> MUTE</label>
 
-    <div id="gamepad">
-      <div><input type="button" value="Y" id="yes"><input type="button" value="N" id="no">
-        <input type="button" value="[spacebar]" id="spcbar">
-      </div>
-      <div>
-        <input type="button" value="^" id="up">
-        <input type="button" value="<" id="left">
-        <input type="button" value="v" id="down">
-        <input type="button" value=">" id="right">
+      <div id="gamepad">
+        <div><input type="button" value="Y" id="yes"><input type="button" value="N" id="no">
+          <input type="button" value="[spacebar]" id="spcbar">
+        </div>
+        <div>
+          <input type="button" value="^" id="up">
+          <input type="button" value="<" id="left">
+          <input type="button" value="v" id="down">
+          <input type="button" value=">" id="right">
+        </div>
       </div>
     </div>
   </div>
   <div id="selectCharacterDialog" class="character-dialog">
     <div class="character-dialog-content">
-      <h1>BLASTAR:SPACE RACE</h1>
+      <h1>BLASTAR: SPACE RACE</h1>
       <h2>Choose your billionaire space racer</h2>
       <ul id="characters">
         <li onclick="selectCharacter('rocket')">
@@ -75,7 +76,7 @@
       <h2>Hit space to continue</h2>
     </div>
   </div>
-  <div id="fuel-cta" class="captcha-dialog">
+  <div id="captcha" class="captcha-dialog">
     <div class="captcha-dialog-content">
       <div class="fake-captcha">
         <div class="fake-captcha-header">

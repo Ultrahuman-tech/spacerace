@@ -14,7 +14,7 @@ var memedialog;
 function selectCharacter(character) {
   selectedCharacterImage = character;
   document.getElementById("selectCharacterDialog").style.display = "none";
-  displayFuelCTA()
+  displayCaptcha()
 }
 
 function changeRocket() {
@@ -32,6 +32,7 @@ function changeRocket() {
 }
 
 function blastar() {
+  document.getElementById('game').style.display = 'block';
   fillTextStyle = "#BBBBBB"
   SH=5;SC=0
   screen(2)
@@ -736,12 +737,13 @@ function showTweet() {
 }
 
 
-function displayFuelCTA() {
-  document.getElementById('fuel-cta').style.display = 'block';
+function displayCaptcha() {
+  document.getElementById('captcha').style.display = 'block';
 }
 
 function displayRedirectCTA() {
   document.getElementById('redirect_cta').style.display = 'block';
+  document.getElementById('game').style.display = 'none';
   const music = new Audio('alert_alarm.mp3');
   music.loop();
   music.play();
@@ -749,7 +751,7 @@ function displayRedirectCTA() {
 
 $(function() {
   $(".not-a-robot").on('click', function() {
-    document.getElementById('fuel-cta').style.display = 'none';
+    document.getElementById('captcha').style.display = 'none';
     document.getElementById("startGameScreen").style.display = "block";
     inKey(mission)
   });

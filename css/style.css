@@ -92,6 +92,7 @@ td {
   bottom: 0;
   display: flex;
   place-items: center;
+
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
 }
@@ -196,7 +197,7 @@ ul#characters li:hover {
   border-bottom-color: green;
 }
 
-#fuel-cta {
+#captcha {
   font-family: "Commodore", sans-serif;
   display: none;
 }
@@ -206,7 +207,7 @@ ul#characters li:hover {
   display: none;
 }
 
-#fuel-cta a {
+#captcha a {
   color: white;
   text-decoration: underline;
 }
@@ -281,6 +282,10 @@ ul#characters li:hover {
   }
 }
 
+#game {
+  display: none;
+}
+
 .character-dialog {
   position: fixed;
   top: 0;
@@ -298,6 +303,7 @@ ul#characters li:hover {
   background: #0c0c0c url(../img/bg_select_character.jpg) center;
   background-size: cover;
   padding-top: 48px;
+  overflow-y: scroll;
 }
 
 .character-dialog-content h1 {
@@ -334,9 +340,9 @@ ul#characters li:hover {
   height: fit-content;
   align-content: center;
   background-color: rgb(255, 255, 255);
-  padding: 2px;
-  height: 100vh;
+  height: 100%;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .fake-captcha {
@@ -345,8 +351,7 @@ ul#characters li:hover {
   grid-template-rows: max-content 1fr max-content;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  height: 100vh;
+  width: calc(100% - 4px);
   max-width: 600px;
   margin: auto;
   border: 2px solid #969696;
@@ -432,7 +437,6 @@ ul#characters li:hover {
   bottom: 0;
   place-items: center;
   background-color: rgba(0, 0, 0, 1);
-  backdrop-filter: blur(5px);
 }
 
 .cta-dialog-content {
@@ -444,6 +448,7 @@ ul#characters li:hover {
   padding: 2px;
   height: 100%;
   font-size: 25px;
+  overflow-y: scroll;
 }
 
 .cta-dialog-content img {
