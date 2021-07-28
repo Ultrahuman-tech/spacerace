@@ -11,7 +11,8 @@ body {
   font-family: "Verdana";
   text-align: center;
   color: #bbb;
-  font-size: 12px;
+  font-size: 24px;
+  background-color: black;
 }
 canvas {
   font-size: 24px;
@@ -379,13 +380,25 @@ ul#characters li:hover {
   right: 0;
   bottom: 0;
   display: none;
+  background-image: url(../img/virgin_bg.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-family: "Commodore", sans-serif;
+}
+
+.start-game-dialog > div {
+  display: flex;
+  flex-direction: column;
   place-items: center;
+  place-content: center;
+  height: 100%;
 }
 
 .start-game-dialog img {
   width: 100%;
-  height: 100%;
   object-fit: contain;
+  max-width: 600px;
 }
 
 .tweet-dialog {
