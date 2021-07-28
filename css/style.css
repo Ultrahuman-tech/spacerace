@@ -385,7 +385,7 @@ ul#characters li:hover {
   right: 0;
   bottom: 0;
   display: none;
-  background-image: url(../img/virgin_bg.jpg);
+  background-image: url(../img/virgin_bg.png);
   background-size: cover;
   background-position: center;
   color: white;
@@ -403,7 +403,8 @@ ul#characters li:hover {
 .start-game-dialog img {
   width: 100%;
   object-fit: contain;
-  max-width: 600px;
+  max-height: 50vh;
+  margin: 48px 0;
 }
 
 .tweet-dialog {
