@@ -9,7 +9,7 @@ var SC=0, SH
 var P, C
 var H, G
 var selectedCharacterImage = 0
-var memedialog;
+var ratioX, ratioY;
 
 function selectCharacter(character) {
   selectedCharacterImage = character;
@@ -33,6 +33,16 @@ function changeRocket() {
 
 function blastar() {
   document.getElementById('game').style.display = 'block';
+
+  resizeHandler();
+
+  canvas = document.getElementById("canvas");
+  ctx = canvas.getContext("2d");
+  ctx.font = "24px Commodore, Courier New";
+  ctx.strokeStyle = "#BBBBBB";
+  ctx.lineWidth = 3;
+  ctx.fillRect(0, 0, 750 * ratioX, 600 * ratioY);
+
   fillTextStyle = "#BBBBBB"
   SH=5;SC=0
   screen(2)
@@ -140,7 +150,7 @@ function mainLoop() {
     fireStatusBeam()
   } else {
     H+=3
-    if (H>250) H = 10
+    if (H>250 * ratioY) H = 10
     if (F) {
       stopLoop()
       shootRockets()
@@ -320,45 +330,45 @@ var onSprite = null
 var currentInterval
 
 function initBasicEnvironment() {
-  canvas = document.getElementById("canvas")
-  ctx = canvas.getContext("2d")
-  ctx.font = "24px Commodore, Courier New"
-  ctx.strokeStyle = "#BBBBBB"
-  ctx.lineWidth = 3
-  ctx.fillRect(0, 0, 750, 600)
   for (var i = 0; i < 25; i++) textBuffers.push("")
   initSound()
   initEventHandling()
 }
 
 function putSprite(id, x, y) {
-  spriteX[id] = x
-  spriteY[id] = y
+  spriteX[id] = x * ratioX
+  spriteY[id] = y * ratioY
   redraw()
   if (spriteStatus) checkCollisions()
 }
 
 function redraw() {
   ctx.fillStyle = "#000000"
-  ctx.fillRect(0, 0, 750, 600)
+  ctx.fillRect(0, 0, 750 * ratioX, 600 * ratioY)
   ctx.fillStyle = fillTextStyle
 
   for (var i = 0; i < textBuffers.length; i++) {
-    ctx.fillText(textBuffers[i], 0, (i + 1)*24)
+    ctx.fillText(textBuffers[i], 0, (i + 1)*24 * ratioY)
   }
 
   for (var i = 0; i < sprite.length; i++) {
-    if (sprite[i]) ctx.drawImage(sprite[i], spriteX[i]*3, spriteY[i]*3, 24, 60)
+    console.log(
+      spriteX[i] * 3 * ratioX,
+      spriteY[i] * 3 * ratioY,
+      24 * ratioX,
+      60 * ratioY
+    );
+    if (sprite[i]) ctx.drawImage(sprite[i], spriteX[i]*3 * ratioX, spriteY[i]*3 * ratioY, 24 * ratioX, 60 * ratioY)
   }
 }
 
 function checkCollisions() {
   if (!onSprite) return
   for (var i = 0; i < 4; i++) {
-    if (spriteX[i] < 0 || spriteY[i] > 204) continue
+    if (spriteX[i] < 0 || spriteY[i] > 204 * ratioY) continue
     xi = spriteX[i]; yi = spriteY[i]
     for (var j = i + 1; j < 6; j++) {
-      if (spriteX[j] < 0 || spriteY[j] > 204) continue
+      if (spriteX[j] < 0 || spriteY[j] > 204 * ratioY) continue
       if (i == 0 && j == 2) continue  // Friendly fire
       xj = spriteX[j]; yj = spriteY[j]
       if (Math.abs(xi - xj) < 8 && Math.abs(yi - yj) < 8) {
@@ -423,7 +433,7 @@ function print(txt) {
 
 function cls() {
   ctx.fillStyle = "#000000"
-  ctx.fillRect(0, 0, 750, 600)
+  ctx.fillRect(0, 0, 750 * ratioX, 600 * ratioY)
   for (var i = 0; i < textBuffers.length; i++) textBuffers[i] = ""
   spriteX = [-10,-10,-10,-10,-10,-10,-10,-10]
   locate(0, 0)
@@ -745,7 +755,7 @@ function displayRedirectCTA() {
   document.getElementById('redirect_cta').style.display = 'block';
   document.getElementById('game').style.display = 'none';
   const music = new Audio('alert_alarm.mp3');
-  music.loop();
+  music.loop = true;
   music.play();
 }
 
@@ -769,3 +779,21 @@ $(function() {
     moveSecondHalf();
   })
 });
+
+function resizeHandler() {
+  var elem = document.getElementById("canvas-container");
+  var bbox = elem.getBoundingClientRect();
+
+  ratioX = bbox.width / 750;
+  ratioY = bbox.height / 600;
+
+  var canvas = document.getElementById("canvas");
+  canvas.width = bbox.width;
+  canvas.height = bbox.height;
+}
+
+$(function () {
+  initBasicEnvironment();
+  resizeHandler();
+  window.addEventListener('resize', resizeHandler);
+})
