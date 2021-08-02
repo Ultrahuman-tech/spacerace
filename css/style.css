@@ -67,14 +67,14 @@ td {
 }
 
 #gamepad input[type="button"] {
-  font-size: 150%;
+  font-size: 24px;
   box-sizing: content-box;
   -moz-box-sizing: content-box;
   -ms-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   background-color: grey;
   color: white;
-  height: 75px;
+  height: var(--gamepad-button-size);
   -webkit-appearance: none;
   border-radius: 0;
 }
@@ -285,6 +285,10 @@ ul#characters li:hover {
   ul#characters li img {
     max-height: 20vh;
   }
+
+  :root {
+  --gamepad-button-size: 60px;
+}
 }
 
 #game {
