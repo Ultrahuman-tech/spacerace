@@ -98,7 +98,6 @@ function maybeGiveInstructions(keycode) {
 
 function mission(keycode) {
   document.getElementById("startGameScreen").style.display = "row";
-  console.log("ewewew", keycode)
   if (keycode == 32) {
     document.getElementById("startGameScreen").style.display = "none";
     blastar()
@@ -150,7 +149,7 @@ function mainLoop() {
     fireStatusBeam()
   } else {
     H+=3
-    if (H>250 * ratioY) H = 10
+    if (H>250) H = 10
     if (F) {
       stopLoop()
       shootRockets()
@@ -336,8 +335,8 @@ function initBasicEnvironment() {
 }
 
 function putSprite(id, x, y) {
-  spriteX[id] = x * ratioX
-  spriteY[id] = y * ratioY
+  spriteX[id] = x
+  spriteY[id] = y
   redraw()
   if (spriteStatus) checkCollisions()
 }
@@ -352,12 +351,6 @@ function redraw() {
   }
 
   for (var i = 0; i < sprite.length; i++) {
-    console.log(
-      spriteX[i] * 3 * ratioX,
-      spriteY[i] * 3 * ratioY,
-      24 * ratioX,
-      60 * ratioY
-    );
     if (sprite[i]) ctx.drawImage(sprite[i], spriteX[i]*3 * ratioX, spriteY[i]*3 * ratioY, 24 * ratioX, 60 * ratioY)
   }
 }
@@ -365,10 +358,10 @@ function redraw() {
 function checkCollisions() {
   if (!onSprite) return
   for (var i = 0; i < 4; i++) {
-    if (spriteX[i] < 0 || spriteY[i] > 204 * ratioY) continue
+    if (spriteX[i] < 0 || spriteY[i] > 204) continue
     xi = spriteX[i]; yi = spriteY[i]
     for (var j = i + 1; j < 6; j++) {
-      if (spriteX[j] < 0 || spriteY[j] > 204 * ratioY) continue
+      if (spriteX[j] < 0 || spriteY[j] > 204) continue
       if (i == 0 && j == 2) continue  // Friendly fire
       xj = spriteX[j]; yj = spriteY[j]
       if (Math.abs(xi - xj) < 8 && Math.abs(yi - yj) < 8) {
@@ -614,12 +607,15 @@ function initSound() {
   semiTones["A"] = 9
   semiTones["B-"] = 10
   semiTones["B"] = 11
-  speaker[0] = document.getElementById("speaker0")
-  speaker[1] = document.getElementById("speaker1")
-  toggleMute(document.getElementById("muted"))
+  speaker[0] = document.getElementById("speaker0");
+  speaker[1] = document.getElementById("speaker1");
+  var mutedCheckbox = document.getElementById("muted");
+  mutedCheckbox.checked = window.localStorage.getItem("muted");
+  toggleMute(mutedCheckbox)
 }
 
 function toggleMute(muted) {
+  window.localStorage.setItem('muted', muted.checked);
   speaker[0].muted = muted.checked
   speaker[1].muted = muted.checked
 }
