@@ -81,7 +81,7 @@ td {
 
 #canvas-container {
   width: 100%;
-  max-height: 600px;
+  /* max-height: 600px; */
   height: 0;
   padding-bottom: 80%;
   position: relative;
@@ -91,6 +91,10 @@ td {
   width: 100%;
   max-width: 750px;
   margin: auto;
+  display: grid;
+  gap: 48px;
+  grid-template-rows: max-content 1fr max-content;
+  height: calc(100vh - 124px);
 }
 
 .dialog {
