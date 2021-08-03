@@ -13,6 +13,7 @@ body {
   color: #bbb;
   font-size: 24px;
   background-color: black;
+  margin: 0;
 }
 canvas {
   font-size: 24px;
@@ -93,8 +94,11 @@ td {
   margin: auto;
   display: grid;
   gap: 48px;
-  grid-template-rows: max-content 1fr max-content;
-  height: calc(100vh - 124px);
+  grid-template-rows: max-content max-content;
+  grid-template-columns: 100%;
+  align-content: space-between;
+  justify-content: space-between;
+  height: calc(100vh - 143px);
 }
 
 .dialog {
@@ -121,6 +125,11 @@ td {
 .dialog-content h1 {
   text-align: left;
   margin-bottom: 48px;
+}
+
+#game > h1 {
+  margin: 0;
+  padding: 48px 0;
 }
 
 ul#characters {
@@ -279,22 +288,6 @@ ul#characters li:hover {
   margin-right: 24px;
 }
 
-@media screen and (max-width: 1000px) {
-  ul#characters {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
-    gap: 72px;
-  }
-
-  ul#characters li img {
-    max-height: 20vh;
-  }
-
-  :root {
-  --gamepad-button-size: 60px;
-}
-}
-
 #game {
   display: none;
 }
@@ -411,6 +404,7 @@ ul#characters li:hover {
   place-items: center;
   place-content: center;
   height: 100%;
+  overflow-y: scroll;
 }
 
 .start-game-dialog img {
@@ -488,4 +482,34 @@ ul#characters li:hover {
   height: 100%;
   left: 0;
   top: 0;
+}
+
+@media screen and (max-width: 1000px) {
+  ul#characters {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 72px;
+  }
+
+  ul#characters li img {
+    max-height: 20vh;
+  }
+
+  :root {
+    --gamepad-button-size: 60px;
+  }
+
+  .start-game-dialog h1 {
+    font-size: 36px;
+  }
+
+  #game-container {
+    gap: 12px;
+    height: calc(100vh - 81px)
+  }
+
+  #game > h1 {
+    padding: 20px 0;
+    font-size: 42px;
+  }
 }

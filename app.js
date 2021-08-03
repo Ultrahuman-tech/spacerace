@@ -133,6 +133,7 @@ function startGame() {
 }
 
 function mainProgram() {
+  cls()
   locate(0,0);
   print("   SCORE" + SC + "       SHIPS " + SH)
   P = 120; C = 180
@@ -224,7 +225,7 @@ function destroyFreighter() {
 
 function newFreighter() {
   cls()
-  locate(3, 0)  // (sic)
+  locate(0, 0)  // (sic)
   print("SCORE" + SC + "            SHIPS " + SH)
   spriteOff()
   G = 20 + Math.floor(Math.random() * 150)
@@ -260,7 +261,7 @@ function destroyShip() {
 
 function nextShip() {
   cls()
-  locate(0, 3)
+  locate(0, 0)
   print("SCORE " + SC + "             SHIPS " + SH)
   putSprite(5, 128, 205)
   putSprite(6, P, C)
@@ -347,11 +348,11 @@ function redraw() {
   ctx.fillStyle = fillTextStyle
 
   for (var i = 0; i < textBuffers.length; i++) {
-    ctx.fillText(textBuffers[i], 0, (i + 1)*24 * ratioY)
+    ctx.fillText(textBuffers[i], 0, (i + 2)*24 * ratioY, 750 * ratioY)
   }
 
   for (var i = 0; i < sprite.length; i++) {
-    if (sprite[i]) ctx.drawImage(sprite[i], spriteX[i]*3 * ratioX, spriteY[i]*3 * ratioY, 24 * ratioX, 60 * ratioY)
+    if (sprite[i]) ctx.drawImage(sprite[i], spriteX[i]*3 * ratioX, spriteY[i]*3 * ratioY, 24 * ratioY, 60 * ratioY)
   }
 }
 
