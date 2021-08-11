@@ -469,8 +469,6 @@ function initEventHandling() {
   addKeyEvents(document.getElementById("up"), 38)
   addKeyEvents(document.getElementById("right"), 39)
   addKeyEvents(document.getElementById("down"), 40)
-  addKeyEvents(document.getElementById("yes"), 89)
-  addKeyEvents(document.getElementById("no"), 78)
   addKeyEvents(document.getElementById("spcbar"), 32)
 
   // Prevent double tap zoom on gamepad.
@@ -694,10 +692,10 @@ function beep() {
 
 
 var hasAlreadyMoved = false;
-var kSecondsAfterCTA = 45;
-var kFuelPercentangeForCTA = 0;
-var kIntervalInMilisecondsLosing1Percent = (kSecondsAfterCTA / (100 - kFuelPercentangeForCTA)) * 1000;
-
+var kSecondsAfterTweet = 40;
+var kFuelPercentangeForTweet = 0;
+var kIntervalInMilisecondsLosing1Percent = (kSecondsAfterTweet / (100 - kFuelPercentangeForTweet)) * 1000;
+console.log(kIntervalInMilisecondsLosing1Percent);
 function moveFirstHalf() {
   if (hasAlreadyMoved == false) {
     hasAlreadyMoved = true;
@@ -706,10 +704,9 @@ function moveFirstHalf() {
     var initialWidth = elem.getBoundingClientRect().width;
     var id = setInterval(frame, kIntervalInMilisecondsLosing1Percent);
     function frame() {
-      if (widthPercentage <= 50) {
+      if (widthPercentage <= kFuelPercentangeForTweet) {
         clearInterval(id);
         showTweet();
-        hasAlreadyMoved = false;
         return;
       }
       widthPercentage--;
@@ -718,16 +715,24 @@ function moveFirstHalf() {
   }
 }
 
+
+var hasAlreadyMovedAfterCTA = false;
+var kSecondsAfterCTA = 30;
+var kFuelPercentangeForCTA = 0;
+var kIntervalInMilisecondsLosing1PercentForCTA =
+  (kSecondsAfterCTA / (kFuelPercentangeForCTA - kFuelPercentangeForCTA)) *
+  1000;
+
 function moveSecondHalf() {
   document.getElementById('tweetScreen').style.display = 'none';
-  if (hasAlreadyMoved == false) {
-    hasAlreadyMoved = true;
-    var elem = document.getElementById("fuel-green");
-    var widthPercentage = 50;
+  if (hasAlreadyMovedAfterCTA == false) {
+    hasAlreadyMovedAfterCTA = true;
+    var elem = document.getElementById("fuel-red");
+    var widthPercentage = 100;
     var initialWidth = elem.getBoundingClientRect().width;
-    var id = setInterval(frame, kIntervalInMilisecondsLosing1Percent);
+    var id = setInterval(frame, kIntervalInMilisecondsLosing1PercentForCTA);
     function frame() {
-      if (widthPercentage <= 10) {
+      if (widthPercentage <= kFuelPercentangeForCTA) {
         clearInterval(id);
         displayRedirectCTA();
         stopLoop();
@@ -748,12 +753,16 @@ function displayCaptcha() {
   document.getElementById('captcha').style.display = 'block';
 }
 
+const music = new Audio("alert_alarm.mp3");
+
 function displayRedirectCTA() {
   document.getElementById('redirect_cta').style.display = 'block';
   document.getElementById('game').style.display = 'none';
-  const music = new Audio('alert_alarm.mp3');
+
   music.loop = true;
-  music.play();
+  if (!document.getElementById("muted").checked) {
+    music.play();
+  }
 }
 
 $(function() {
@@ -794,3 +803,11 @@ $(function () {
   resizeHandler();
   window.addEventListener('resize', resizeHandler);
 })
+
+function stopMusic() {
+  music.pause();
+}
+
+function restart() {
+  window.location.reload(); 
+}

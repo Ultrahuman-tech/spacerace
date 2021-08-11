@@ -37,8 +37,8 @@
         <label id="mute"><input type="checkbox" id="muted" onclick="toggleMute(this)"> MUTE</label>
       </div>
       <div id="gamepad">
-        <div><input type="button" value="Y" id="yes"><input type="button" value="N" id="no">
-          <input type="button" value="[spacebar]" id="spcbar">
+        <div>
+          <input type="button" value="[space]" id="spcbar">
         </div>
         <div>
           <input type="button" value="^" id="up">
@@ -110,7 +110,8 @@
     <div class="cta-dialog-content">
       <img src="img/fuel_empty.png" />
       <label>You’re out of fuel!!</label>
-      <a href="https://ultrahuman.com/#step-meditate" target="_blank">REFUEL NOW TO PROCEED</a>
+      <a href="https://ultrahuman.com/#step-meditate" onClick="stopMusic()" target="_blank">REFUEL NOW TO PROCEED</a>
+      <p id="restart" onclick="restart()">Restart the game</p>
     </div>
   </div>
   <audio src='alert_alarm.mp3'></audio>

@@ -485,10 +485,16 @@ ul#characters li:hover {
 }
 
 @media screen and (max-width: 1000px) {
+  .character-dialog-content h1 {
+    margin-top: 0;
+  }
+
   ul#characters {
+    margin-top: 0;
+    padding-top: 0;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
-    gap: 72px;
+    grid-template-rows: repeat(4, max-content);
+    gap: 48px;
   }
 
   ul#characters li img {
@@ -512,4 +518,11 @@ ul#characters li:hover {
     padding: 20px 0;
     font-size: 42px;
   }
+}
+
+#restart {
+  margin-top: 48px;
+  font-size: 14px;
+  color: #888888;
+  cursor: pointer;
 }
