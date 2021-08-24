@@ -165,26 +165,30 @@ ul#characters li:hover {
   height: 40vh;
 }
 
-#fuel-container {
+.fuel-container {
   position: relative;
   font-family: "Commodore", sans-serif;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: -72px;
+  margin-top: 24px;
   margin-left: 24px;
 }
 
-#fuel-green,
-#fuel-red {
+#game-container .fuel-container {
+  margin-top: -72px;
+}
+
+.fuel-green,
+.fuel-red {
   position: absolute;
   height: 60px;
   width: 60px;
   overflow: hidden;
 }
 
-#fuel-green:before,
-#fuel-red:before {
+.fuel-green:before,
+.fuel-red:before {
   content: "";
   position: absolute;
   left: 0;
@@ -195,26 +199,26 @@ ul#characters li:hover {
   border-left: 60px solid transparent;
 }
 
-#fuel {
+.fuel {
   position: relative;
   height: 60px;
   width: 60px;
 }
 
-#fuel-red {
+.fuel-red {
   width: 30px;
 }
 
-#fuel-red:before {
+.fuel-red:before {
   border-bottom-color: red;
 }
 
-#fuel-green {
+.fuel-green {
   left: 30px;
   width: 30px;
 }
 
-#fuel-green:before {
+.fuel-green:before {
   left: -30px;
   border-bottom-color: green;
 }
@@ -292,17 +296,17 @@ ul#characters li:hover {
   display: none;
 }
 
-.character-dialog {
+.character-dialog, .character-selected-dialog {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  display: row;
+  display: flex;
   place-items: center;
 }
 
-.character-dialog-content {
+.character-dialog-content, .character-selected-dialog-content {
   width: 100%;
   height: 100%;
   margin: auto;
@@ -312,7 +316,14 @@ ul#characters li:hover {
   overflow-y: scroll;
 }
 
-.character-dialog-content h1 {
+.character-selected-dialog-content {
+  place-content: center;
+  place-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.character-dialog-content h1, .character-selected-dialog-content h1 {
   text-align: center;
   margin-top: 48px;
   margin-bottom: 30px;
@@ -322,12 +333,16 @@ ul#characters li:hover {
   color: red;
 }
 
-.character-dialog-content h2 {
+.character-dialog-content h2, .character-selected-dialog-content h2 {
   text-align: center;
   margin-bottom: 30px;
   font-size: 36px;
   color: white;
   font-family: "Commodore";
+}
+
+#characterSelected {
+  display: none;
 }
 
 .captcha-dialog {

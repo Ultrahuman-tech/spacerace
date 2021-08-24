@@ -14,16 +14,16 @@ var ratioX, ratioY;
 function selectCharacter(character) {
   selectedCharacterImage = character;
   document.getElementById("selectCharacterDialog").style.display = "none";
-  displayCaptcha()
+  document.getElementById("character-selected-img").src = "img/characters/"+selectedCharacterImage+".png";
+    document.getElementById("characterSelected").style.display = "block";
 }
 
 function changeRocket() {
   var rocket = document.getElementById("sprite0")
   document.getElementById("sprite3").src = 'img/rockets/r_jeff.png'
-  var selectCharacter = selectedCharacterImage;
-  if (selectCharacter == 'elon') {
+  if (selectedCharacterImage == 'elon') {
     rocket.src = 'img/rockets/elon.png'
-  } else if (selectCharacter == 'jeff') {
+  } else if (selectedCharacterImage == 'jeff') {
     rocket.src = 'img/rockets/jeff.png'
     document.getElementById("sprite3").src = 'img/rockets/r_elon.png'
   } else {
@@ -695,7 +695,7 @@ var hasAlreadyMoved = false;
 var kSecondsAfterTweet = 40;
 var kFuelPercentangeForTweet = 0;
 var kIntervalInMilisecondsLosing1Percent = (kSecondsAfterTweet / (100 - kFuelPercentangeForTweet)) * 1000;
-console.log(kIntervalInMilisecondsLosing1Percent);
+
 function moveFirstHalf() {
   if (hasAlreadyMoved == false) {
     hasAlreadyMoved = true;
@@ -750,6 +750,7 @@ function showTweet() {
 
 
 function displayCaptcha() {
+  document.getElementById('characterSelected').style.display = 'none';
   document.getElementById('captcha').style.display = 'block';
 }
 
