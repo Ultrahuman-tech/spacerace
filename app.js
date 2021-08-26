@@ -32,6 +32,7 @@ function changeRocket() {
 }
 
 function blastar() {
+  console.log('BLASTAR');
   document.getElementById('game').style.display = 'block';
 
   resizeHandler();
@@ -46,67 +47,8 @@ function blastar() {
   fillTextStyle = "#BBBBBB"
   SH=5;SC=0
   screen(2)
-  print(Array(14).join(" ") + "BLASTAR")
+  printTxt(Array(14).join(" ") + "BLASTAR")
   startGame()
-}
-
-function blastarTune() {
-  play(3, 9, 50, "CECECDBABADACECEBDACDBDCEGG", blastarTune2)
-}
-function blastarTune2() {
-  play(4, 9, 50, "CECECDBABADACECEBDACDBDCEGG", blastarTune3)
-}
-function blastarTune3() {
-  play(3, 9, 50, "CECECDBABADACECEBDACDBDCEGG", blastarTune4)
-}
-function blastarTune4() {
-  play(4, 9, 50, "CECECDBABADACECEBDACDBDCEGG", showAuthor)
-}
-
-function showAuthor() {
-  screen(1, 2)
-  window.setTimeout(inKey(mission), 3*kEmptyIterationMillis)
-}
-
-function promptForInstructions() {
-  cls()
-  // TODO: double check number of spaces.
-  locate(10, 5);print("             BLASTAR");print("");
-  print("          DO YOU NEED INSTRUCTIONS")
-  print("                 (Y/N)")
-  inKey(maybeGiveInstructions)
-}
-
-function maybeGiveInstructions(keycode) {
-  beep()
-  if (keycode == 121 || keycode == 89) {
-    screen(1)
-    // TODO: double check number of spaces
-    print(" ")
-    print(" ")
-    print(" ")
-    print(" ")
-    print(" ")
-    print("    MISSION:PLAY TILL THE END");print("")
-    print("    TO WIN SOMETHING FROM");print("")
-    print("    VIRGIN GALACTIC");print("")
-    inKey(startGame)
-  } else {
-    startGame()
-  }
-}
-
-function mission(keycode) {
-  document.getElementById("startGameScreen").style.display = "row";
-  if (keycode == 32) {
-    document.getElementById("startGameScreen").style.display = "none";
-    blastar()
-  }
-}
-
-function missionOnClick() {
-  document.getElementById("startGameScreen").style.display = "none";
-  blastar()
 }
 
 function startGame() {
@@ -135,7 +77,7 @@ function startGame() {
 function mainProgram() {
   cls()
   locate(0,0);
-  print("   SCORE" + SC + "       SHIPS " + SH)
+  printTxt("   SCORE" + SC + "       SHIPS " + SH)
   P = 120; C = 180
   H = 30; G = 15
   spriteOn()
@@ -226,7 +168,7 @@ function destroyFreighter() {
 function newFreighter() {
   cls()
   locate(0, 0)  // (sic)
-  print("SCORE" + SC + "            SHIPS " + SH)
+  printTxt("SCORE" + SC + "            SHIPS " + SH)
   spriteOff()
   G = 20 + Math.floor(Math.random() * 150)
   startLoop(mainLoop, kMainLoopMillis)
@@ -241,7 +183,7 @@ function statusBeamLoop() {
   spriteOn()
   NN += 4
   PI=P;maybeMoveShip();P=PI
-  locate(15, 15); print("            STATUS BEAM")
+  locate(15, 15); printTxt("            STATUS BEAM")
   onSpriteGoSub(destroyShip)
   putSprite(5, OO, NN)
   play(2, 9, 15, "B", maybeEndStatusBeamLoop)
@@ -262,7 +204,7 @@ function destroyShip() {
 function nextShip() {
   cls()
   locate(0, 0)
-  print("SCORE " + SC + "             SHIPS " + SH)
+  printTxt("SCORE " + SC + "             SHIPS " + SH)
   putSprite(5, 128, 205)
   putSprite(6, P, C)
   G = 20 + Math.floor(170 * Math.random())
@@ -273,9 +215,9 @@ function nextShip() {
   } else {
     cls()
     locate(0, 0)
-    print("                BLASTAR"); print("")
-    print("             FLEET DESTROYED"); print("")
-    print("      WOULD YOU LIKE ANOTHER GAME")
+    printTxt("                BLASTAR"); printTxt("")
+    printTxt("             FLEET DESTROYED"); printTxt("")
+    printTxt("      WOULD YOU LIKE ANOTHER GAME")
     inKey(maybeStartAnotherGame)
   }
 }
@@ -285,11 +227,12 @@ function maybeStartAnotherGame(key) {
     blastar()
   } else {
     // TODO: how do I end?
-    print(">")
+    printTxt(">")
   }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
+var currentInterval
 
 function startLoop(loop, period) {
   function f() {
@@ -327,7 +270,6 @@ var spriteBits
 var spriteStatus = false
 var onSprite = null
 
-var currentInterval
 
 function initBasicEnvironment() {
   for (var i = 0; i < 25; i++) textBuffers.push("")
@@ -415,7 +357,7 @@ function locate(row, col) {
   cursorCol = col
 }
 
-function print(txt) {
+function printTxt(txt) {
   oldText = textBuffers[cursorRow]
   pre = oldText.substr(0, cursorCol)
   pre += Array(cursorCol - pre.length + 1).join(" ")
@@ -490,6 +432,7 @@ function keyDown(evt) {
     default: return
   }
   evt.preventDefault()
+  evt.stopPropagation();
 }
 
 var konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
@@ -670,9 +613,12 @@ function addNote(o, v, l, note, wave) {
 }
 
 function playInSpeaker(wave) {
-  speaker[currentSpeaker].src = encodeWave(wave)
-  speaker[currentSpeaker].play()
-  currentSpeaker = 1 - currentSpeaker
+  if (!document.getElementById("muted").checked) {
+    new Audio(encodeWave(wave)).play();
+  }
+  // speaker[currentSpeaker].src = encodeWave(wave)
+  // speaker[currentSpeaker].play()
+  // currentSpeaker = 1 - currentSpeaker
 }
 
 function play(o, v, l, notes, callback) {
@@ -720,7 +666,7 @@ var hasAlreadyMovedAfterCTA = false;
 var kSecondsAfterCTA = 30;
 var kFuelPercentangeForCTA = 0;
 var kIntervalInMilisecondsLosing1PercentForCTA =
-  (kSecondsAfterCTA / (kFuelPercentangeForCTA - kFuelPercentangeForCTA)) *
+  (kSecondsAfterCTA / (100 - kFuelPercentangeForCTA)) *
   1000;
 
 function moveSecondHalf() {
@@ -770,7 +716,6 @@ $(function() {
   $(".not-a-robot").on('click', function() {
     document.getElementById('captcha').style.display = 'none';
     document.getElementById("startGameScreen").style.display = "block";
-    inKey(mission)
   });
 
   $(".captcha-image").on("click", function () {
@@ -779,6 +724,7 @@ $(function() {
 
   $(".start-game-dialog").on('touchstart', function() {
     document.getElementById("startGameScreen").style.display = "none";
+    console.log('touch start');
     blastar()
   })
 

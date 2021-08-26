@@ -526,7 +526,12 @@ ul#characters li:hover {
 
   #game-container {
     gap: 12px;
-    height: calc(100vh - 81px)
+    max-height: calc(100% - 81px);
+    align-content: flex-start;
+  }
+
+  #game {
+    max-height: 100vh;
   }
 
   #game > h1 {
