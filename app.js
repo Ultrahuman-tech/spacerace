@@ -32,7 +32,6 @@ function changeRocket() {
 }
 
 function blastar() {
-  console.log('BLASTAR');
   document.getElementById('game').style.display = 'block';
 
   resizeHandler();
@@ -211,6 +210,7 @@ function nextShip() {
   H = 0
   spriteOff()
   if (SH >= 0) {
+    stopLoop();
     startLoop(mainLoop, kMainLoopMillis)
   } else {
     cls()
@@ -272,9 +272,10 @@ var onSprite = null
 
 
 function initBasicEnvironment() {
-  for (var i = 0; i < 25; i++) textBuffers.push("")
-  initSound()
-  initEventHandling()
+  for (var i = 0; i < 25; i++) textBuffers.push("");
+  initSound();
+  initEventHandling();
+  inKey(function() {});
 }
 
 function putSprite(id, x, y) {
@@ -432,7 +433,6 @@ function keyDown(evt) {
     default: return
   }
   evt.preventDefault()
-  evt.stopPropagation();
 }
 
 var konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
@@ -713,9 +713,18 @@ function displayRedirectCTA() {
 }
 
 $(function() {
-  $(".not-a-robot").on('click', function() {
+  $(".not-a-robot input").on('click', function() {
     document.getElementById('captcha').style.display = 'none';
     document.getElementById("startGameScreen").style.display = "block";
+    var fn = function (ev) {
+      ev.preventDefault();
+      if (ev.keyCode === 32) {
+        document.getElementById("startGameScreen").style.display = "none";
+        blastar();
+      }
+      document.removeEventListener('keyup', fn);
+    };
+    document.addEventListener('keyup', fn);
   });
 
   $(".captcha-image").on("click", function () {
@@ -724,7 +733,6 @@ $(function() {
 
   $(".start-game-dialog").on('touchstart', function() {
     document.getElementById("startGameScreen").style.display = "none";
-    console.log('touch start');
     blastar()
   })
 
@@ -757,4 +765,17 @@ function stopMusic() {
 
 function restart() {
   window.location.reload(); 
+}
+
+function onHyperlinkClickPreventAppOpen(ev) {
+  const el = ev.target;
+  if(el.href) {
+    ev.preventDefault();
+    window.document.location.assign(el.href);
+  }
+}
+
+function clickUltrahumanLink(ev) {
+  stopMusic();
+  onHyperlinkClickPreventAppOpen(ev);
 }
