@@ -399,36 +399,6 @@ ul#characters li:hover {
   font-size: 24px;
 }
 
-.start-game-dialog {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
-  background-image: url(../img/virgin_bg.png);
-  background-size: cover;
-  background-position: center;
-  color: white;
-  font-family: "Commodore", sans-serif;
-}
-
-.start-game-dialog > div {
-  display: flex;
-  flex-direction: column;
-  place-items: center;
-  place-content: center;
-  height: 100%;
-  overflow-y: scroll;
-}
-
-.start-game-dialog img {
-  width: 100%;
-  object-fit: contain;
-  max-height: 50vh;
-  margin: 48px 0;
-}
-
 .tweet-dialog {
   position: fixed;
   top: 0;
@@ -518,10 +488,6 @@ ul#characters li:hover {
 
   :root {
     --gamepad-button-size: 60px;
-  }
-
-  .start-game-dialog h1 {
-    font-size: 36px;
   }
 
   #game-container {

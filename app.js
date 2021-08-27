@@ -715,26 +715,12 @@ function displayRedirectCTA() {
 $(function() {
   $(".not-a-robot input").on('click', function() {
     document.getElementById('captcha').style.display = 'none';
-    document.getElementById("startGameScreen").style.display = "block";
-    var fn = function (ev) {
-      ev.preventDefault();
-      if (ev.keyCode === 32) {
-        document.getElementById("startGameScreen").style.display = "none";
-        blastar();
-      }
-      document.removeEventListener('keyup', fn);
-    };
-    document.addEventListener('keyup', fn);
+    blastar();
   });
 
   $(".captcha-image").on("click", function () {
     $(this).toggleClass("checked");
   });
-
-  $(".start-game-dialog").on('touchstart', function() {
-    document.getElementById("startGameScreen").style.display = "none";
-    blastar()
-  })
 
   $(".tweet-dialog").on('click', function() {
     moveSecondHalf();
